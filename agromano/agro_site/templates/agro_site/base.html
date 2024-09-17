@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <!-- Head -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Na AgroMano, somos uma empresa especializada em suprir as necessidades do setor agropecuário e de cuidados com animais de estimação...">
+        <meta name="keywords" content="Agropecuária, Produtos agrícolas, Utensílios para o campo...">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Jonathan Schramm Narciso">
+        <meta property="og:locale" content="pt_BR">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="AgroMano">
+        <meta name="msvalidate.01" content="CONTENT">
+        <title>Agro Mano - Diversidades em produtos agrícolas e animais de estimação</title>
+    
+        <!-- Tags do Django para carregar arquivos estáticos -->
+        {% load static %}
+    
+        <!-- Arquivo CSS -->
+        <link rel="stylesheet" href="{% static 'agro_site/css/style.css' %}">
+        <link rel='shortcut icon' href="{% static 'agro_site/images/icons8-agro-16.png' %}" type='image/x-icon'/>
+    
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+        <!-- Scripts externos -->
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header>
+            <nav class="navbar">
+                <h2 class="logo"><a href="/">AGRO<span style="color: #c8815f;">MANO</span></a></h2>
+                <input type="checkbox" id="menu-toggler">
+                <label for="menu-toggler" id="hamburger-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </label>
+                <ul class="all-links">
+                    <li class="links-primary"><a href="/">Início</a></li>
+                    <li class="links-primary"><a href="/#releases">Promoções</a></li>
+                    <li class="links-primary"><a href="{% url 'products' %}">Produtos</a></li>
+                    <li class="links-primary"><a href="{% url 'about' %}">Sobre nós</a></li>
+                    <li class="links-primary"><a href="{% url 'contact' %}">Contato</a></li>
+                    <li>
+                        <div id="social" style="font-weight: bold;">
+                            <a data-id="24817" href="https://wa.me/554733265159" class="whatsapp dt_social" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i> 
+                                <b>WhatsApp</b>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        {% block 'videocontent' %}
+        {% endblock %}
+
+        <main>
+            {% block 'maincontent' %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            <div>
+                <span>Copyright © {{ current_year }} All Rights Reserved</span>
+                <span class="link">
+                    <a href="/">Início</a>
+                    <a href="{% url 'contact' %}">Contato</a>
+                </span>
+            </div>
+        </footer>
+
+        <!--Script JS-->
+        <!-- <script src="{% static 'agro_site/javascript/script.js' %}"></script> -->
+
+        <script>
+            $(document).ready(function(){
+                $('.zoom-img').on( "click", function() {
+                    $(this).toggleClass('maxSize')
+                });
+            });
+        </script>
+    </body>
+</html>

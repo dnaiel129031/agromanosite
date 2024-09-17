@@ -1,0 +1,41 @@
+{% extends "agro_site/base.html" %}
+
+{% load static %}
+
+{% block 'videocontent' %}
+    <section class="homepage" id="home">
+        <video loading="lazy" autoplay loop muted src="{% static 'agro_site/videos/Vídeo PSAs.mp4' %}"></video>
+        <div class="content">
+            <div class="text">
+                <h1>AgroMano<br> O Seu Parceiro Agropecuário</h1>
+                <p>Aberto de segunda a sábado, das 07:00hrs às 18:00hrs.<br> Ligue: (47 3326-5159)</p>
+            </div>
+            <div id="social" style="font-weight: bold;">
+                <a data-id="24817" href="https://wa.me/554733265159" class="whatsapp dt_social" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i> 
+                    <b>WhatsApp</b>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block 'maincontent' %}
+    <section class="releases" id="releases">
+        <h2>Promoções da Semana</h2>
+        <p>Uma coleção premium dos produtos mais requintados e desejados.</p>
+        <ul class="cards">
+            {% for produto in produtos %}
+            <li class="card">
+                <img class="zoom-img" id="{{ produto.id }}" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                <h2 id="{{ produto.id }}">R${{ produto.preco|floatformat:2 }}</h2>
+                <span class="span-text">{{ produto.nome }}</span>
+                <a href="{% url 'send_whatsapp' produto.id %}" id="whatsapp-link" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar
+                </a>
+                <span class="span-text" id="item16">{{ produto.estoque }} UN em estoque</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

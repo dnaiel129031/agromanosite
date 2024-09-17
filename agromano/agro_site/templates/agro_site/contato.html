@@ -1,0 +1,36 @@
+{% extends "agro_site/base.html" %}
+
+{% load static %}
+
+{% block 'maincontent' %}
+
+<section class="contact" id="contact">
+    <h2>Contato</h2>
+    <p>Entre em contato conosco para qualquer dúvida ou feedback.</p>
+    <div class="row">
+      <div class="col information">
+        <div class="contact-details">
+          <p><i class="fas fa-map-marker-alt"></i> R. Franz Volles, 1057 - Itoupava Central, Blumenau - SC</p>
+          <p><i class="fas fa-envelope"></i> aggromanno@gmail.com</p>
+          <p><i class="fas fa-phone"></i> (47) 3326-5159</p>
+          <p><i class="fas fa-clock"></i> Segunda - Sexta: 07:00 - 18:00 </p>
+          <p><i class="fas fa-clock"></i> Sábado: 08:00 - 15:00 </p>
+          <p><i class="fas fa-clock"></i> Domingo: Fechado</p>
+          <p><i class="fas fa-globe"></i> www.agromano.com</p>
+        </div>          
+      </div>
+      <div class="col form">
+        <form class="form" action="https://formsubmit.co/aggromanno@gmail.com" method="POST">
+          <input type="hidden" name="_autoresponse" value="Olá, agradeçemos a sua mensagem, retornaremos assim que possível!">
+          <input type="hidden" name="_template" value="table">
+          <input class="input" type="text" placeholder="Nome*" name="name" required="">
+          <input class="input" type="tel" placeholder="Telefone*" name="tel" required="">
+          <input class="input" type="email" placeholder="Email*" name="email" required="">
+          <textarea class="text-area" placeholder="Digite sua Mensagem...*" name="message" required=""></textarea>
+          <button class="form-button" id="submit" type="submit">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

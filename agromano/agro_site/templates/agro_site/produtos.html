@@ -1,0 +1,29 @@
+{% extends "agro_site/base.html" %}
+
+{% load static %}
+
+{% block 'maincontent' %}
+    <section class="col-sm-6">
+        <form action="." method="GET" class="form-inline" id="searchForm">
+            <input type="text" id="search" name="search" required="True" class="form-control" placeholder="Busque pelo nome">
+            <input type="submit" class="whatsapp-button" value="Buscar">
+        </form>
+    </section>
+    <section class="products" id="products">
+        <h2>Confira toda a nossa linha de produtos</h2>
+        <p>Temos uma ampla variedade de produtos de alta qualidade que vão encantar você. Descubra o que temos a oferecer e aproveite nossas ofertas exclusivas.</p>
+        <ul class="cards">
+            {% for produto_all in produtos_all %}
+            <li class="card">
+                <img class="zoom-img" id="{{ produto_all.id }}" src="{{ produto_all.imagem.url }}" alt="{{ produto_all.nome }}">
+                <h2 id="{{ produto_all.id }}">R${{ produto_all.preco|floatformat:2 }}</h2>
+                <span class="span-text" id="item16">{{ produto_all.nome }}</span>
+                <a href="{% url 'send_whatsapp' produto_all.id %}" id="whatsapp-link" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar
+                </a>
+                <span class="span-text" id="item16">{{ produto_all.estoque }} UN em estoque</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
